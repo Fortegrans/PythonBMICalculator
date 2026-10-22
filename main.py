@@ -2,8 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 
 window = Tk()
-window.title("Vücut kile indeksi")
-window.minsize(400,500)
+window.title("Vücut kitle indeksi")
+window.minsize(500,500)
 window.config(padx=20,pady=20)
 
 def button_clicked():
@@ -27,7 +27,9 @@ def button_clicked():
                 durum ="zayıf"
             elif 18.4 < bmi <= 24.9:
                 durum ="normal"
-            elif 24.9 < bmi <= 29.9:
+            elif 24.9 < bmi <= 26.9:
+                durum ="biraz kilolu"
+            elif 26.9 < bmi <= 29.9:
                 durum ="fazla kilolu"
             elif 30 <= bmi < 35:
                 durum = "1. Derece Obez"
@@ -39,7 +41,8 @@ def button_clicked():
             #sonucu ekrandaki etikete yazdırmak için;
             sonuc_label.config(text=f"bmi: {bmi}\nDurum: {durum}")
         except ValueError:
-            messagebox.showerror("Lütfen geçerli bir sonuç giriniz")
+            messagebox.showerror("Hata!",message="Lütfen geçerli bir sonuç giriniz")
+
 
 
 my_label = Label(text="Vücut ağırlığınızı giriniz (kg)")
@@ -66,6 +69,7 @@ my_entry2.pack()
 
 my_button = Button(text="Hesapla", command=button_clicked)
 my_button.config(padx=20,pady=5)
+my_button.config(font=("Arial", 10, "bold"))
 my_button.pack()
 
 sonuc_label =Label(text="Sonuc")
@@ -73,15 +77,6 @@ sonuc_label.config(font=("Arial", 15, "italic", "bold"))
 sonuc_label.config(padx=20,pady=20)
 
 sonuc_label.pack()
-
-
-
-
-
-
-
-
-
 
 
 window.mainloop()
